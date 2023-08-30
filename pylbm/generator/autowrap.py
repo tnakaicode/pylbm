@@ -112,6 +112,8 @@ def make_ext(modname, pyxfilename):
         build_file = os.path.join(self.workdir, "build.py")
         bld = open(build_file, "w")
         code = f"""
+import os
+os.chdir({self.workdir})
 import pyximport
 pyximport.install(build_dir=r'{self.workdir}', inplace=True)
 import {self.filename}
